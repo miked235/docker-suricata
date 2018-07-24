@@ -57,6 +57,6 @@ RUN chmod +x suricata-entrypoint.sh
 # Only set to true if this is purely a rule updater pod
 ENV RULES_UPDATER=false    
 # Should be set by Helm, do not change here
-CHART_PREFIX=suricata
+ENV CHART_PREFIX=suricata
 
 ENTRYPOINT ["/suricata-entrypoint.sh"]
