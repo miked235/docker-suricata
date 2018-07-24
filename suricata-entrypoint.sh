@@ -4,7 +4,7 @@
 set -e
 
 if [ ! -d "/logs/suricata" ]; then
-  mkdir /logs/suricata
+  mkdir -p /logs/suricata
 fi
 
 sleep 10
