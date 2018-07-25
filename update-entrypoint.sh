@@ -5,6 +5,8 @@ set -e
 
 mkdir -p /data/suricata /logs/suricata
 
+sleep 10
+
 # Update rules
 suricata-update
 
