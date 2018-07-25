@@ -8,7 +8,7 @@ RUN yum -y update && \
         yum -y install python-yaml python-pip pytest python34-yaml python34-pytest python34-pip PyYAML && \
         pip install --upgrade pip && \
         pip install --pre --upgrade suricata-update && \
-        mkdir /var/lib/suricata /var/lib/suricata/rules && \
+        mkdir -p /var/lib/suricata/rules && \
         gem install fpm && \
         mkdir /tmp/{build,hyperscan,ragel,boost-1.64,suricata,rpms} && \
         cd /tmp/build && \
