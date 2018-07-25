@@ -56,10 +56,9 @@ RUN useradd -s /sbin/nologin suri && \
     chown -R suri:suri /var/log/suricata/
         
 COPY suricata-entrypoint.sh /suricata-entrypoint.sh
-RUN chmod +x suricata-entrypoint.sh
-
-# Only set to true if this is purely a rule updater pod
-ENV RULES_UPDATER=false    
+COPY update-entrypoint.sh /update-entrypoint.sh
+RUN chmod +x suricata-entrypoint.sh update-entrypoint.sh
+  
 # Should be set by Helm, do not change here
 ENV CHART_PREFIX=suricata
 
