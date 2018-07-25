@@ -1,6 +1,8 @@
 #!/bin/bash
 # Suricata rules update script
 
+set -e
+
 # Update rules
 suricata-update
 
