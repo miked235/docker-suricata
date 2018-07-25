@@ -3,7 +3,7 @@
 
 set -e
 
-mkdir -p /data/suricata
+mkdir -p /data/suricata /logs/suricata
 
 # Update rules
 suricata-update
