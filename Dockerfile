@@ -53,7 +53,7 @@ RUN yum -y update && \
         
 RUN useradd -s /sbin/nologin suri && \
     chown -R suri:suri /var/run/suricata/ && \
-    chown -R suri:suri /var/log/suricata/ && \
+    chown -R suri:suri /var/log/suricata/
         
 COPY suricata-entrypoint.sh /suricata-entrypoint.sh
 RUN chmod +x suricata-entrypoint.sh
