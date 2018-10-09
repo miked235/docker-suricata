@@ -58,7 +58,9 @@ RUN useradd -s /sbin/nologin suri && \
 COPY suricata-entrypoint.sh /suricata-entrypoint.sh
 COPY update-entrypoint.sh /update-entrypoint.sh
 RUN chmod +x suricata-entrypoint.sh update-entrypoint.sh
-  
+
+ENV INTERFACE1=eth0 \
+	INTERFACE2=eth1
 # Should be set by Helm, do not change here
 ENV CHART_PREFIX=suricata
 
