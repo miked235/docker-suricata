@@ -1,5 +1,8 @@
 FROM centos:latest
 
+# Version Number
+ENV VERSION="4.0.5"
+
 # Installation
 RUN yum -y update && \
         yum -y install epel-release && \
@@ -36,13 +39,13 @@ RUN yum -y update && \
         fpm --prefix=/usr/ -s dir -t rpm -n hyperscan -v 4.3.1 -d 'ragel' -C /tmp/hyperscan -p /tmp/rpms/ && \
         yum -y localinstall /tmp/rpms/hyperscan*.rpm && \
         cd /tmp/build && \
-        curl -L -O https://www.openinfosecfoundation.org/download/suricata-4.0.5.tar.gz && \
-        tar xzf suricata-4.0.5.tar.gz && \
-        cd suricata-4.0.5 && \
+        curl -L -O https://www.openinfosecfoundation.org/download/suricata-$VERSION.tar.gz && \
+        tar xzf suricata-$VERSION.tar.gz && \
+        cd suricata-$VERSION && \
         ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-hiredis --enable-nfqueue --with-libhs-libraries=/usr/lib/ --with-libhs-includes=/usr/include/hs/ --enable-lua --enable-geoip && \
         make && \
         make install-full DESTDIR=/tmp/suricata && \
-        fpm --prefix=/ -s dir -t rpm -n suricata -v 4.0.5 -C /tmp/suricata/ -p /tmp/rpms/ && \
+        fpm --prefix=/ -s dir -t rpm -n suricata -v $VERSION -C /tmp/suricata/ -p /tmp/rpms/ && \
         yum -y localinstall /tmp/rpms/{hyperscan-*.rpm,ragel-*.rpm,suricata-*.rpm} && \
         ldconfig && \
         cd / && \
